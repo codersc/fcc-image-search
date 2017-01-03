@@ -3,7 +3,7 @@ var dbUrl = process.env.MONGODB_URI || 'mongodb://localhost:27017/';
 var express = require('express');
 var app = express();
 var mongo = require('mongodb').MongoClient;
-var bing = require('node-bing-api')({ accKey: "52d40438cf984550b6565be3e29675d8" });
+var bing = require('node-bing-api')({ accKey: process.env.ACC_KEY });
 
 app.get('/', function(req, res) {
    res.send('usage eamples');
