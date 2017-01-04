@@ -6,7 +6,7 @@ var mongo = require('mongodb').MongoClient;
 var bing = require('node-bing-api')({ accKey: process.env.ACC_KEY });
 
 app.get('/', function(req, res) {
-   res.send('usage eamples');
+   res.send('The app is running and ready to be tested.');
 });
 
 app.get('/api/latest/imagesearch', function(req, res) {
@@ -53,6 +53,9 @@ app.get('/api/imagesearch/:searchTerm', function(req, res) {
             skip: offset    // Skip first n result 
         }, 
         function(error, response, body) {
+            if (error) {
+                console.error(error);
+            }
             var results = [];
             for (var i = 0; i < body.value.length; i++) {
                 var result = {
